@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estructura de la presentación · BID</title>
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--tx:#1c2230;--mu:#64708a;--bd:#e3e7f0;--b1:#3b82f6;--b2:#14b8a6;--b3:#f59e0b;--b4:#8b5cf6;--sh:0 6px 24px rgba(30,40,80,.08)}
+@media(prefers-color-scheme:dark){:root{--bg:#10131b;--card:#181d2a;--tx:#e8ebf4;--mu:#97a3bd;--bd:#283049;--sh:none}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 20px 60px}
+header{background:linear-gradient(135deg,#1e3a8a,#6d28d9);color:#fff;border-radius:22px;padding:34px 32px;box-shadow:var(--sh)}
+header small{letter-spacing:.14em;text-transform:uppercase;opacity:.8;font-size:.75rem}
+header h1{margin:.3em 0 .2em;font-size:2rem;line-height:1.2}header p{margin:.3em 0 0;opacity:.92;max-width:760px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.chips span{background:rgba(255,255,255,.18);border-radius:999px;padding:5px 14px;font-size:.85rem}
+h2{font-size:1.3rem;margin:38px 0 12px;display:flex;align-items:center;gap:10px}h2::before{content:"";width:6px;height:1.3em;border-radius:3px;background:linear-gradient(var(--b1),var(--b4))}
+.msg{background:var(--card);border:1px solid var(--bd);border-left:6px solid var(--b4);border-radius:14px;padding:16px 20px;box-shadow:var(--sh);font-size:1.05rem}
+.tl{display:flex;height:46px;border-radius:12px;overflow:hidden;box-shadow:var(--sh);font-size:.8rem;color:#fff;font-weight:600}
+.tl div{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px 18px;box-shadow:var(--sh);border-top:5px solid var(--c)}
+.card h3{margin:0 0 2px;font-size:1.05rem}.card .t{color:var(--mu);font-size:.85rem;margin-bottom:8px}.card ul{margin:0;padding-left:18px;font-size:.92rem}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:var(--sh)}
+table{border-collapse:collapse;width:100%;min-width:920px;font-size:.9rem}
+th{background:#1e2a4a;color:#fff;text-align:left;padding:12px 14px;font-weight:600;position:sticky;top:0}
+td{padding:11px 14px;border-top:1px solid var(--bd);vertical-align:top}
+td.blk{width:150px;font-weight:700;color:#fff;background:var(--c);border-top:1px solid rgba(255,255,255,.35)}
+td.blk small{display:block;font-weight:500;opacity:.9;margin-top:4px}
+td.n{width:44px;font-weight:700;color:var(--mu);text-align:center}
+td.tm{white-space:nowrap;color:var(--mu)}td b.tp{display:block}
+tr:hover td:not(.blk){background:rgba(120,130,200,.07)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px 20px;box-shadow:var(--sh)}.box h3{margin:0 0 8px;font-size:1.05rem}.box ul{margin:0;padding-left:18px}.box li{margin:4px 0}
+footer{margin-top:36px;color:var(--mu);font-size:.85rem;text-align:center}
+@media print{body{background:#fff}.card,.box,.tw,header{box-shadow:none}th{position:static}}
+</style></head><body><div class="wrap">
+
+<header><small>Conferencia científica · 15 minutos</small>
+<h1>Estructura de la presentación<br>Bad IP Detector (BID)</h1>
+<p>Clasificación de direcciones IPv4 maliciosas mediante la integración del Teorema de Bayes y CatBoost.</p>
+<div class="chips"><span>13 diapositivas + respaldo</span><span>970 IPs · 780 benignas / 190 maliciosas</span><span>Prueba de concepto</span></div></header>
+
+<h2>Mensaje central</h2>
+<div class="msg">Combinar un motor bayesiano con CatBoost permite puntuar el riesgo de una IP de forma <b>explicable</b> y con pocos falsos positivos. Como prueba de concepto funciona bien en la muestra; su generalización a infraestructura no vista es el siguiente reto.</div>
+
+<h2>Distribución del tiempo</h2>
+<div class="tl">
+<div style="flex:2.5;background:var(--b1)">Problema · 2:30</div>
+<div style="flex:4;background:var(--b2)">Método · 4:00</div>
+<div style="flex:5;background:var(--b3)">Resultados · 5:00</div>
+<div style="flex:2.5;background:var(--b4)">Conclusiones · 2:30</div>
+<div style="flex:1;background:#64748b">Margen</div></div>
+
+<h2>Los cuatro bloques de un vistazo</h2>
+<div class="cards">
+<div class="card" style="--c:var(--b1)"><h3>1 · Problema y justificación</h3><div class="t">Diapositivas 1 a 3 · 2:30</div><ul><li>IoCs aislados y ef&iacute;meros</li><li>Falsos negativos y fatiga de alertas</li><li>Propuesta: BID h&iacute;brido</li></ul></div>
+<div class="card" style="--c:var(--b2)"><h3>2 · Método</h3><div class="t">Diapositivas 4 a 7 · 4:00</div><ul><li>Muestra y cuatro fuentes</li><li>Arquitectura y Docker</li><li>Bayes y CatBoost: por qué cada uno</li></ul></div>
+<div class="card" style="--c:var(--b3)"><h3>3 · Resultados</h3><div class="t">Diapositivas 8 a 11 · 5:00</div><ul><li>M&eacute;tricas y baseline</li><li>Generalizaci&oacute;n por ASN y umbral</li><li>SHAP e interfaz</li></ul></div>
+<div class="card" style="--c:var(--b4)"><h3>4 · Conclusiones</h3><div class="t">Diapositivas 12 y 13 · 2:30</div><ul><li>&iquest;Sirve? Aportaci&oacute;n y potencial</li><li>Limitaciones</li><li>Trabajo futuro</li></ul></div>
+</div>
+
+<h2>Matriz: bloque, tema y contenido</h2>
+<div class="tw"><table>
+<thead><tr><th>Bloque</th><th>#</th><th>Tema</th><th>Contenidos clave</th><th>Recurso visual</th><th>Tiempo</th></tr></thead>
+<tbody>
+<tr><td class="blk" rowspan="3" style="--c:var(--b1)">1. Problema y justificaci&oacute;n<small>2:30</small></td>
+<td class="n">1</td><td><b class="tp">Portada</b></td><td>T&iacute;tulo, autores, afiliaciones (Universidad de Guadalajara e IIEG), ponente.</td><td>Logotipo institucional</td><td class="tm">0:15</td></tr>
+<tr><td class="n">2</td><td><b class="tp">El problema</b></td><td>IoCs como listas planas y ef&iacute;meras; ninguna fuente es completa; falsos negativos con una sola fuente, falsos positivos al bloquear por una sola se&ntilde;al; IoCs at&oacute;micos f&aacute;ciles de evadir.</td><td>Esquema de los dos errores opuestos</td><td class="tm">1:15</td></tr>
+<tr><td class="n">3</td><td><b class="tp">Justificaci&oacute;n y propuesta</b></td><td>Fusi&oacute;n multifuente y modelos probabil&iacute;sticos; gradient boosting supera a algoritmos convencionales; los modelos profundos son opacos, por eso la explicabilidad; objetivo: prueba de concepto de BID.</td><td>L&iacute;nea: fuentes &rarr; Bayes &rarr; CatBoost</td><td class="tm">1:00</td></tr>
+
+<tr><td class="blk" rowspan="4" style="--c:var(--b2)">2. M&eacute;todo<small>4:00</small></td>
+<td class="n">4</td><td><b class="tp">Datos y muestra</b></td><td>970 IPv4: 780 benignas (MISP) y 190 maliciosas (CIRCL, may 2025 a feb 2026); 80/20 deliberado; tope de 1,000 consultas de AbuseIPDB; IP-API aporta pa&iacute;s, ISP y ASN; variables excluidas por fuga de procedencia.</td><td>Dos columnas: crear dataset vs. predecir</td><td class="tm">1:00</td></tr>
+<tr><td class="n">5</td><td><b class="tp">Arquitectura</b></td><td>APIs &rarr; limpieza con Regex &rarr; motor bayesiano &rarr; CatBoost &rarr; interfaz Streamlit; Docker; manejo de fallos de APIs; equipo de consumo, inferencia en menos de 200 ms.</td><td>Diagrama de flujo</td><td class="tm">0:45</td></tr>
+<tr><td class="n">6</td><td><b class="tp">Por qu&eacute; Bayes</b></td><td>Naive Bayes con independencia condicional; suavizado de Laplace (&alpha; = 1); salida <code>bayesian_risk</code>; ejemplo: Data Center / Web Hosting sube la probabilidad de 19.59% a 30.49%; verosimilitudes estimadas solo con datos de entrenamiento de cada pliegue.</td><td>F&oacute;rmula de Bayes y ejemplo num&eacute;rico</td><td class="tm">1:15</td></tr>
+<tr><td class="n">7</td><td><b class="tp">Por qu&eacute; CatBoost y protocolo</b></td><td>Categ&oacute;ricas nativas de alta cardinalidad (Ordered Target Statistics); &aacute;rboles sim&eacute;tricos como regularizador; Random Forest sobreajust&oacute;; log-loss estable en 30 iteraciones, m&iacute;nimo cerca de la 67 de 400; validaci&oacute;n 5-fold, baseline log&iacute;stico y validaci&oacute;n por grupos de ASN.</td><td>&Aacute;rbol sim&eacute;trico o curva de log-loss</td><td class="tm">1:00</td></tr>
+
+<tr><td class="blk" rowspan="4" style="--c:var(--b3)">3. Resultados<small>5:00</small></td>
+<td class="n">8</td><td><b class="tp">Desempe&ntilde;o vs. baseline</b></td><td>CatBoost: Accuracy 0.9186, Precisi&oacute;n 0.7781, Recall 0.8316, F1 0.8012, ROC-AUC 0.9592. Regresi&oacute;n log&iacute;stica: 0.9216, 0.7689, 0.8579, 0.8109, 0.9514. La se&ntilde;al se concentra en la variable bayesiana.</td><td>Barras agrupadas de las dos columnas</td><td class="tm">1:15</td></tr>
+<tr><td class="n">9</td><td><b class="tp">Generalizaci&oacute;n y umbral</b></td><td>Validaci&oacute;n por ASN: Accuracy 0.8018, F1 0.6396, AUC 0.8347. Recall con abuse score 0: 83.87% (CatBoost) y 85.48% (baseline). Percentil 85: 146 marcadas, 132 maliciosas, precisi&oacute;n 90.41%, recall 69.47%, 14 benignas afectadas (1.79%).</td><td>Tres tarjetas con una cifra grande</td><td class="tm">1:15</td></tr>
+<tr><td class="n">10</td><td><b class="tp">Explicabilidad SHAP</b></td><td><code>bayesian_risk</code> 42.1% e infraestructura normalizada 28.4%. Caso 9.9.9.10 (Quad9): score residual de 1 contrarrestado por el tipo de infraestructura; posterior 7.03%, veredicto BENIGN (6.96%).</td><td>Gr&aacute;fica de importancia y captura del caso</td><td class="tm">1:30</td></tr>
+<tr><td class="n">11</td><td><b class="tp">Interfaz de BID</b></td><td>Telemetr&iacute;a global, analizador forense en tiempo real y reporte a la comunidad (AbuseIPDB). Mostrar el flujo de 9.9.9.10 en capturas.</td><td>2 o 3 capturas</td><td class="tm">1:00</td></tr>
+
+<tr><td class="blk" rowspan="2" style="--c:var(--b4)">4. Conclusiones<small>2:30</small></td>
+<td class="n">12</td><td><b class="tp">Conclusiones</b></td><td>&iquest;Sirve? Como prueba de concepto, s&iacute;. Reduce falsos positivos al combinar fuentes. Novedad: preprocesador bayesiano + CatBoost + SHAP + interfaz operativa. Potencial: apoyo a SOC y firewalls.</td><td>Frase de cierre en grande</td><td class="tm">1:15</td></tr>
+<tr><td class="n">13</td><td><b class="tp">Limitaciones y trabajo futuro</b></td><td>Muestra peque&ntilde;a y de dos procedencias; ca&iacute;da en validaci&oacute;n por ASN; el baseline casi iguala al h&iacute;brido. Futuro: m&aacute;s datos y fuentes benignas, evaluaci&oacute;n temporal, ingesta en tiempo real.</td><td>Dos columnas: limitaciones / futuro</td><td class="tm">1:15</td></tr>
+
+<tr><td class="blk" style="--c:#64748b">Respaldo<small>fuera de tiempo</small></td>
+<td class="n">R</td><td><b class="tp">Diapositivas de apoyo</b></td><td>Tabla completa de m&eacute;tricas; an&aacute;lisis de falsos positivos de AbuseIPDB (6 casos, incluido 9.9.9.10); ecuaciones de Bayes y Laplace; ejemplos de Regex; curva de log-loss y comparaci&oacute;n con Random Forest.</td><td>Tablas y ecuaciones</td><td class="tm">&mdash;</td></tr>
+</tbody></table></div>
+
+<h2>Conviene tener preparado</h2>
+<div class="two">
+<div class="box"><h3>Preguntas probables</h3><ul>
+<li>&iquest;Aprende solo &laquo;proveedor grande y conocido&raquo;?</li>
+<li>&iquest;Hay fuga de informaci&oacute;n en <code>bayesian_risk</code>?</li>
+<li>&iquest;Para qu&eacute; CatBoost si la log&iacute;stica rinde casi igual?</li>
+<li>&iquest;Qu&eacute; significa la ca&iacute;da en validaci&oacute;n por ASN?</li>
+<li>&iquest;Se puede afirmar que supera a Random Forest?</li></ul></div>
+<div class="box"><h3>Verificar antes de presentar</h3><ul>
+<li>Que el umbral del percentil 85 y sus conteos provengan de predicciones fuera de muestra.</li>
+<li>Que la validaci&oacute;n por grupos de ASN use el mismo esquema por pliegue para <code>bayesian_risk</code>.</li>
+<li>Que las capturas se lean bien proyectadas.</li>
+<li>Usar &laquo;evidencia preliminar&raquo; y &laquo;prueba de concepto&raquo; en lugar de &laquo;valida la hip&oacute;tesis&raquo;.</li></ul></div>
+</div>
+
+<footer>Basado en el art&iacute;culo &laquo;Malicious Traffic Detection: Integrating Bayes&rsquo; Theorem and CatBoost for IPv4 Address Classification&raquo;.</footer>
+</div></body></html>
